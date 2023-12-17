@@ -10,8 +10,10 @@ export default function Home() {
     setClicks(clicks + 1)
   }
 
-  const autoIncrementer = () => {
-    setClicks((prevClicks) => prevClicks + 1)
+  const autoIncrementer = () : void => {
+    if (clicksPerSecond) {
+      setClicks((prevClicks) => prevClicks + 1)
+    }
   }
 
   useEffect(() => {
