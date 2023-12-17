@@ -1,10 +1,19 @@
 "use client"
 
+import UpgradeItem from '@/components/UpgradeItem'
 import { useEffect, useState } from 'react'
 
 export default function Home() {
   const [clicks, setClicks] = useState<number>(0)
   const [clicksPerSecond, setClicksPerSecond] = useState<number>(0)
+  const [upgrades, setUpgrades] = useState<Upgrade[]>([
+    {
+      name: 'Bonus Clicker',
+      description: 'Performs additional clicks for you, increasesing clicks per second by 1.',
+      increase: 1,
+      amount: 0
+    }
+  ])
 
   function incrementClicks(): void {
     setClicks(clicks + 1)
@@ -24,7 +33,14 @@ export default function Home() {
 
   return (
     <main className="min-h-screen grid place-content-center p-24">
-      <button onClick={incrementClicks} className='text-5xl duration-200 active:scale-95'>{ clicks }</button>
+      <div className='max-w-5xl'>
+        <button onClick={incrementClicks} className='text-5xl duration-200 active:scale-95'>{ clicks }</button>
+        <div className='mt-20 grid grid-cols-4'>
+          { upgrades.map((upgrade) =>
+            <UpgradeItem upgrade={upgrade} key={upgrade.name}/>
+          )}
+        </div>
+      </div>
     </main>
   )
 }
