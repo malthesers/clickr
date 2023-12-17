@@ -15,7 +15,7 @@ export default function Home() {
 
   const autoIncrementer = () : void => {
     if (clicksPerSecond) {
-      setClicks((prevClicks) => prevClicks + 1)
+      setClicks((prevClicks) => prevClicks + clicksPerSecond)
     }
   }
 
