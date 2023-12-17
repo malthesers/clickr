@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 
 export default function Home() {
   const [clicks, setClicks] = useState<number>(0)
-  const [clicksPerSecond, setClicksPerSecond] = useState<number>(1)
+  const [clicksPerSecond, setClicksPerSecond] = useState<number>(0)
 
   function incrementClicks(): void {
     setClicks(clicks + 1)
