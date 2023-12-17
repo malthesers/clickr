@@ -5,9 +5,8 @@ import { useUpgrades } from '@/context/UpgradesProvider'
 import { useEffect, useState } from 'react'
 
 export default function Home() {
-  const { upgrades } = useUpgrades()
+  const { upgrades, clicksPerSecond } = useUpgrades()
   const [clicks, setClicks] = useState<number>(0)
-  const [clicksPerSecond, setClicksPerSecond] = useState<number>(0)
   
 
   function incrementClicks(): void {
