@@ -11,8 +11,30 @@ export default function Home() {
       name: 'Bonus Clicker',
       description: 'Performs additional clicks for you, increasesing clicks per second by 1.',
       increase: 1,
-      amount: 0
-    }
+      price: 10,
+      owned: 0
+    },
+    {
+      name: 'Mega Clicker',
+      description: 'An improved bonus clicker, increasesing clicks per second by 3.',
+      increase: 3,
+      price: 30,
+      owned: 0
+    },
+    {
+      name: 'Giga Clicker',
+      description: 'A gigantic bonus clicker, increasesing clicks per second by 5.',
+      increase: 5,
+      price: 50,
+      owned: 0
+    },
+    {
+      name: 'Omega Clicker',
+      description: 'The ultimate bonus clicker, increasesing clicks per second by 10.',
+      increase: 10,
+      price: 100,
+      owned: 0
+    },
   ])
 
   function incrementClicks(): void {
@@ -35,7 +57,7 @@ export default function Home() {
     <main className="min-h-screen grid place-content-center p-24">
       <div className='max-w-5xl'>
         <button onClick={incrementClicks} className='text-5xl duration-200 active:scale-95'>{ clicks }</button>
-        <div className='mt-20 grid grid-cols-4'>
+        <div className='mt-20 grid grid-cols-4 gap-4'>
           { upgrades.map((upgrade) =>
             <UpgradeItem upgrade={upgrade} key={upgrade.name}/>
           )}
