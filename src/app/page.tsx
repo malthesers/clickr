@@ -17,15 +17,15 @@ export default function Home() {
     console.log('auto: ' + clicksPerSecond)
 
     if (clicksPerSecond) {
-      setClicks((prevClicks) => prevClicks + 1)
+      setClicks((prevClicks) => prevClicks + clicksPerSecond)
     }
   }
 
   useEffect(() => {
     if (isMounted) {
       console.log(clicksPerSecond)
-      const intervalTimer:number = clicksPerSecond === 0 ? 1000 : (1000 / clicksPerSecond)
-      const autoClickInterval:NodeJS.Timeout = setInterval(autoClick, intervalTimer)
+      // const intervalTimer:number = clicksPerSecond === 0 ? 1000 : (1000 / clicksPerSecond)
+      const autoClickInterval:NodeJS.Timeout = setInterval(autoClick, 1000)
 
       return () => clearInterval(autoClickInterval)
     }
