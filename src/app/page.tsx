@@ -1,12 +1,12 @@
 "use client"
 
 import UpgradeItem from '@/components/UpgradeItem'
-import { useUpgrades } from '@/context/UpgradesProvider'
+import { useThings } from '@/context/ContextProvider'
 import { useEffect, useState } from 'react'
 
 export default function Home() {
   const [isMounted, setIsMounted] = useState<boolean>(false)
-  const { upgrades, clicksPerSecond } = useUpgrades()
+  const { upgrades, clicksPerSecond } = useThings()
   const [clicks, setClicks] = useState<number>(0)
   
   function incrementClicks(): void {

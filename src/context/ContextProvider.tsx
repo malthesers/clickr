@@ -2,7 +2,7 @@
 
 import { ReactNode, createContext, useContext, useState } from "react"
 
-const UpgradesContext = createContext<{
+const Context = createContext<{
   upgrades: Upgrade[]
   clicksPerSecond: number
   buyUpgrade: (bought:Upgrade) => void
@@ -12,11 +12,11 @@ const UpgradesContext = createContext<{
   buyUpgrade: () => {}
 })
 
-export function useUpgrades() {
-  return useContext(UpgradesContext)
+export function useThings() {
+  return useContext(Context)
 }
 
-export default function UpgradesProvider({ children }: { children: ReactNode}) {
+export default function ContextProvider({ children }: { children: ReactNode}) {
   const [upgrades, setUpgrades] = useState<Upgrade[]>([
     {
       name: 'Bonus Clicker',
@@ -59,8 +59,8 @@ export default function UpgradesProvider({ children }: { children: ReactNode}) {
   const clicksPerSecond:number = upgrades.reduce((clicks, upgrade) => clicks + (upgrade.increase * upgrade.owned), 0)
 
   return (
-    <UpgradesContext.Provider value={{ upgrades, clicksPerSecond, buyUpgrade }}>
+    <Context.Provider value={{ upgrades, clicksPerSecond, buyUpgrade }}>
       { children }
-    </UpgradesContext.Provider>
+    </Context.Provider>
   )
 }

@@ -1,11 +1,11 @@
-import { useUpgrades } from "@/context/UpgradesProvider"
+import { useThings } from "@/context/ContextProvider"
 
 interface UpgradeItemProps {
   upgrade: Upgrade
 }
 
 export default function UpgradeItem({ upgrade }: UpgradeItemProps) {
-  const { buyUpgrade } = useUpgrades()
+  const { buyUpgrade } = useThings()
 
   return (
     <div onClick={() => buyUpgrade(upgrade)} className="rounded-xl border-2 border-slate-300 py-2 px-4 cursor-pointer duration-200 hover:bg-slate-300 hover:text-black">
