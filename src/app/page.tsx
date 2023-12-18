@@ -8,31 +8,24 @@ export default function Home() {
   const [isMounted, setIsMounted] = useState<boolean>(false)
   const { upgrades, clicksPerSecond } = useUpgrades()
   const [clicks, setClicks] = useState<number>(0)
-
-  // let autoClickInterval:NodeJS.Timeout
   
   function incrementClicks(): void {
     setClicks(clicks + 1)
   }
 
-  // const autoIncrementer = () : void => {
-  //   console.log(clicksPerSecond)
-  //   if (clicksPerSecond) {
-  //     setClicks((prevClicks) => prevClicks + clicksPerSecond)
-  //   }
-  // }
-
   function autoClick (): void {
     console.log('auto: ' + clicksPerSecond)
 
     if (clicksPerSecond) {
-      setClicks((prevClicks) => prevClicks + clicksPerSecond)
+      setClicks((prevClicks) => prevClicks + 1)
     }
   }
 
   useEffect(() => {
     if (isMounted) {
-      const autoClickInterval = setInterval(autoClick, 1000)
+      console.log(clicksPerSecond)
+      const intervalTimer:number = clicksPerSecond === 0 ? 1000 : (1000 / clicksPerSecond)
+      const autoClickInterval:NodeJS.Timeout = setInterval(autoClick, intervalTimer)
 
       return () => clearInterval(autoClickInterval)
     }
