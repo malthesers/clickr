@@ -1,6 +1,7 @@
 'use client'
 
 import { ReactNode, createContext, useContext, useState } from "react"
+import { upgradesData } from "@/data/upgrades"
 
 const Context = createContext<{
   clicks: number
@@ -24,36 +25,7 @@ export function useThings() {
 
 export default function ContextProvider({ children }: { children: ReactNode}) {
   const [clicks, setClicks] = useState<number>(0)
-  const [upgrades, setUpgrades] = useState<Upgrade[]>([
-    {
-      name: 'Bonus Clicker',
-      description: 'Performs additional clicks for you, increasesing clicks per second by 1.',
-      increase: 1,
-      price: 10,
-      owned: 0
-    },
-    {
-      name: 'Mega Clicker',
-      description: 'An improved bonus clicker, increasesing clicks per second by 3.',
-      increase: 3,
-      price: 30,
-      owned: 0
-    },
-    {
-      name: 'Giga Clicker',
-      description: 'A gigantic bonus clicker, increasesing clicks per second by 5.',
-      increase: 5,
-      price: 50,
-      owned: 0
-    },
-    {
-      name: 'Omega Clicker',
-      description: 'The ultimate bonus clicker, increasesing clicks per second by 10.',
-      increase: 10,
-      price: 100,
-      owned: 0
-    },
-  ])
+  const [upgrades, setUpgrades] = useState<Upgrade[]>(upgradesData)
   const clicksPerSecond:number = upgrades.reduce((clicks, upgrade) => clicks + (upgrade.increase * upgrade.owned), 0)
 
   function doClick(): void {
