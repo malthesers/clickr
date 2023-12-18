@@ -5,6 +5,7 @@ import { useUpgrades } from '@/context/UpgradesProvider'
 import { useEffect, useState } from 'react'
 
 export default function Home() {
+  const [isMounted, setIsMounted] = useState<boolean>(false)
   const { upgrades, clicksPerSecond } = useUpgrades()
   const [clicks, setClicks] = useState<number>(0)
   
@@ -14,15 +15,32 @@ export default function Home() {
   }
 
   const autoIncrementer = () : void => {
+    console.log(clicksPerSecond)
     if (clicksPerSecond) {
       setClicks((prevClicks) => prevClicks + clicksPerSecond)
     }
   }
 
-  useEffect(() => {
-    const incrementerInterval = setInterval(autoIncrementer, 1000)
+  function autoClick (): void {
+    console.log('auto: ' + clicksPerSecond)
 
-    return () => clearInterval(incrementerInterval)
+    if (clicksPerSecond) {
+      setClicks((prevClicks) => prevClicks + clicksPerSecond)
+    }
+
+    setTimeout(autoClick, 1000)
+  }
+
+  useEffect(() => {
+    if (isMounted) {
+      // const incrementerInterval = setInterval(autoIncrementer, 1000)
+      autoClick()
+      // return () => clearInterval(incrementerInterval)
+    }
+  }, [isMounted])
+
+  useEffect(() => {
+    setIsMounted(true)
   }, [])
 
   return (
@@ -31,9 +49,10 @@ export default function Home() {
         <div className='flex'>
           <button onClick={incrementClicks} className='mx-auto text-5xl duration-200 active:scale-95'>{ clicks }</button>
         </div>
-        <div className='mt-20 grid grid-cols-4 gap-4'>
+        <p className='mt-20 text-2xl text-center'>{ clicksPerSecond } CpS</p>
+        <div className='mt-8 grid grid-cols-4 gap-4'>
           { upgrades.map((upgrade) =>
-            <UpgradeItem upgrade={upgrade} key={upgrade.name}/>
+            <UpgradeItem upgrade={upgrade} key={upgrade.name} />
           )}
         </div>
       </div>

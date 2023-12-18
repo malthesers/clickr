@@ -5,9 +5,11 @@ import { ReactNode, createContext, useContext, useState } from "react"
 const UpgradesContext = createContext<{
   upgrades: Upgrade[]
   clicksPerSecond: number
+  buyUpgrade: (bought:Upgrade) => void
 }>({
   upgrades: [],
   clicksPerSecond: 0,
+  buyUpgrade: () => {}
 })
 
 export function useUpgrades() {
@@ -46,10 +48,18 @@ export default function UpgradesProvider({ children }: { children: ReactNode}) {
     },
   ])
 
+  function buyUpgrade(bought: Upgrade) {
+    setUpgrades(
+      upgrades.map(upgrade =>
+        upgrade.name === bought.name ? {...bought, owned: bought.owned + 1 } : upgrade 
+      )
+    )
+  }
+
   const clicksPerSecond:number = upgrades.reduce((clicks, upgrade) => clicks + (upgrade.increase * upgrade.owned), 0)
 
   return (
-    <UpgradesContext.Provider value={{ upgrades, clicksPerSecond }}>
+    <UpgradesContext.Provider value={{ upgrades, clicksPerSecond, buyUpgrade }}>
       { children }
     </UpgradesContext.Provider>
   )
