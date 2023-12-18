@@ -23,12 +23,12 @@ export default function Home() {
 
   return (
     <main className="min-h-screen grid place-content-center p-24">
-      <div className='max-w-5xl'>
-        <div className='flex'>
+      <div className='max-w-5xl grid grid-cols-2'>
+        <div className='grid place-content-center gap-4'>
+          <p className='text-2xl text-center'>{ clicksPerSecond } CpS</p>
           <button onClick={doClick} className='mx-auto text-5xl duration-200 active:scale-95'>{ clicks }</button>
         </div>
-        <p className='mt-20 text-2xl text-center'>{ clicksPerSecond } CpS</p>
-        <div className='mt-8 grid grid-cols-4 gap-4'>
+        <div className='flex flex-col gap-4'>
           { upgrades.map((upgrade) =>
             <UpgradeItem upgrade={upgrade} key={upgrade.name} />
           )}
