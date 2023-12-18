@@ -1,7 +1,7 @@
 export const upgradesData:Upgrade[] = [
   {
     name: 'Bonus Clicker',
-    description: 'Performs additional clicks for you, increasesing clicks per second by 1.',
+    description: 'Performs additional clicks for you, increasing clicks per second by 1.',
     increase: 1,
     price: 10,
     owned: 0
