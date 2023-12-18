@@ -3,12 +3,18 @@
 import { ReactNode, createContext, useContext, useState } from "react"
 
 const Context = createContext<{
+  clicks: number
   upgrades: Upgrade[]
   clicksPerSecond: number
+  doClick: () => void
+  autoClick: () => void
   buyUpgrade: (bought:Upgrade) => void
 }>({
+  clicks: 0,
   upgrades: [],
   clicksPerSecond: 0,
+  doClick: () => {},
+  autoClick: () => {},
   buyUpgrade: () => {}
 })
 
@@ -17,6 +23,7 @@ export function useThings() {
 }
 
 export default function ContextProvider({ children }: { children: ReactNode}) {
+  const [clicks, setClicks] = useState<number>(0)
   const [upgrades, setUpgrades] = useState<Upgrade[]>([
     {
       name: 'Bonus Clicker',
@@ -47,6 +54,17 @@ export default function ContextProvider({ children }: { children: ReactNode}) {
       owned: 0
     },
   ])
+  const clicksPerSecond:number = upgrades.reduce((clicks, upgrade) => clicks + (upgrade.increase * upgrade.owned), 0)
+
+  function doClick(): void {
+    setClicks(clicks + 1)
+  }
+
+  function autoClick(): void {
+    if (clicksPerSecond) {
+      setClicks((prevClicks) => prevClicks + clicksPerSecond)
+    }
+  }
 
   function buyUpgrade(bought: Upgrade) {
     setUpgrades(
@@ -56,10 +74,9 @@ export default function ContextProvider({ children }: { children: ReactNode}) {
     )
   }
 
-  const clicksPerSecond:number = upgrades.reduce((clicks, upgrade) => clicks + (upgrade.increase * upgrade.owned), 0)
 
   return (
-    <Context.Provider value={{ upgrades, clicksPerSecond, buyUpgrade }}>
+    <Context.Provider value={{ clicks, upgrades, clicksPerSecond, doClick, autoClick, buyUpgrade }}>
       { children }
     </Context.Provider>
   )
