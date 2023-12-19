@@ -39,11 +39,15 @@ export default function ContextProvider({ children }: { children: ReactNode}) {
   }
 
   function buyUpgrade(bought: Upgrade) {
-    setUpgrades(
-      upgrades.map(upgrade =>
-        upgrade.name === bought.name ? {...bought, owned: bought.owned + 1 } : upgrade 
+    if (bought.price < clicks) {
+      setClicks((prevClicks) => prevClicks - bought.price)
+
+      setUpgrades(
+        upgrades.map(upgrade =>
+          upgrade.name === bought.name ? {...bought, owned: bought.owned + 1 } : upgrade 
+        )
       )
-    )
+    }
   }
 
 
