@@ -39,7 +39,7 @@ export default function ContextProvider({ children }: { children: ReactNode}) {
   }
 
   function buyUpgrade(bought: Upgrade) {
-    if (bought.price < clicks) {
+    if (bought.price <= clicks) {
       setClicks((prevClicks) => prevClicks - bought.price)
 
       setUpgrades(
