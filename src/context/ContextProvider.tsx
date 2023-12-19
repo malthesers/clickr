@@ -3,15 +3,7 @@
 import { ReactNode, createContext, useContext, useState } from "react"
 import { upgradesData } from "@/data/upgrades"
 
-const Context = createContext<{
-  clicks: number
-  upgrades: Upgrade[]
-  cps: number
-  cpsInterval: number
-  doClick: () => void
-  autoClick: () => void
-  buyUpgrade: (bought:Upgrade) => void
-}>({
+const Context = createContext<Context>({
   clicks: 0,
   upgrades: [],
   cps: 0,
