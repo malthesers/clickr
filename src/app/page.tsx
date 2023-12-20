@@ -10,13 +10,7 @@ export default function Home() {
 
   useEffect(() => {
     if (isMounted) {
-      let autoClickInterval:NodeJS.Timeout
-
-      if (cpsInterval >= 100) {
-        autoClickInterval = setInterval(autoClick, cpsInterval)
-      } else {
-        autoClickInterval = setInterval(autoClick, 100)
-      }
+      const autoClickInterval = setInterval(autoClick, (cpsInterval >= 100 ? cpsInterval : 100))
 
       return () => clearInterval(autoClickInterval)
     }

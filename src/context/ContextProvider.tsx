@@ -28,11 +28,8 @@ export default function ContextProvider({ children }: { children: ReactNode}) {
   }
 
   function autoClick(): void {
-    if (cps && cpsInterval >= 100) {
-      setClicks((prevClicks) => prevClicks + 1)
-    } else {
-      setClicks((prevClicks) => prevClicks + Math.round((cps / 10)))
-    }
+    // If cps is not 0, update clicks by incrementing 
+    if (cps) setClicks((prevClicks) => prevClicks + (cpsInterval >= 100 ? 1 : Math.round(cps / 10)))
   }
 
   function buyUpgrade(bought: Upgrade) {
