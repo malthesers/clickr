@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import UpgradeItem from '@/components/UpgradeItem'
 import { useThings } from '@/context/ContextProvider'
@@ -21,7 +21,7 @@ export default function Home() {
   useEffect(() => setIsMounted(true), [])
 
   return (
-    <main className="min-h-screen grid place-content-center p-24">
+    <main className='min-h-screen grid place-content-center p-24'>
       <div className='max-w-5xl grid grid-cols-2'>
         <div className='grid place-content-center gap-4'>
           <p className='text-2xl text-center'>{ cps } CpS</p>

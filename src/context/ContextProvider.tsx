@@ -1,7 +1,7 @@
 'use client'
 
-import { ReactNode, createContext, useContext, useState } from "react"
-import { upgradesData } from "@/data/upgrades"
+import { ReactNode, createContext, useContext, useState } from 'react'
+import { upgradesData } from '@/data/upgrades'
 
 const Context = createContext<Context>({
   clicks: 0,
