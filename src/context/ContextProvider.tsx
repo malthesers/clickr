@@ -28,7 +28,7 @@ export default function ContextProvider({ children }: { children: ReactNode}) {
   }
 
   function autoClick(): void {
-    // If cps is not 0, update clicks by incrementing 
+    // If cps above 0, update clicks by incrementing, OR if interval is less than 100 add 10% instead
     if (cps) setClicks((prevClicks) => prevClicks + (cpsInterval >= 100 ? 1 : Math.round(cps / 10)))
   }
 
