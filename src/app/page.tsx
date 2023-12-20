@@ -13,6 +13,7 @@ export default function Home() {
       // Set interval to calculated interval, OR 100 if less than 100 to cap calls at 10 per sec
       const autoClickInterval = setInterval(autoClick, (cpsInterval >= 100 ? cpsInterval : 100))
 
+      // Clear interval on unmount
       return () => clearInterval(autoClickInterval)
     }
   }, [isMounted, cps])

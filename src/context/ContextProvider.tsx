@@ -33,8 +33,12 @@ export default function ContextProvider({ children }: { children: ReactNode}) {
   }
 
   function buyUpgrade(bought: Upgrade) {
+    // Proceed if enough clicks to purchase
     if (bought.price <= clicks) {
+      // Subtract price from clicks
       setClicks((prevClicks) => prevClicks - bought.price)
+
+      // Increment amount owned of parameterised upgrade
       setUpgrades(
         upgrades.map(upgrade =>
           upgrade.name === bought.name ? {...bought, owned: bought.owned + 1 } : upgrade 
