@@ -1,10 +1,10 @@
 import { useThings } from '@/context/ContextProvider'
 
-interface UpgradeItemProps {
+interface AutoClickerProps {
   autoClicker: AutoClicker
 }
 
-export default function AutoClicker({ autoClicker }: UpgradeItemProps) {
+export default function AutoClicker({ autoClicker }: AutoClickerProps) {
   const { clicks, buyUpgrade } = useThings()
 
   return (
