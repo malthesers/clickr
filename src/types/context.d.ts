@@ -7,4 +7,5 @@ interface Context {
   doClick: () => void
   autoClick: () => void
   buyAutoClicker: (bought:AutoClicker) => void
+  buyPassiveBuff: (bought:PassiveBuff) => void
 }

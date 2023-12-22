@@ -12,7 +12,8 @@ const Context = createContext<Context>({
   cpsInterval: 0,
   doClick: () => {},
   autoClick: () => {},
-  buyAutoClicker: () => {}
+  buyAutoClicker: () => {},
+  buyPassiveBuff: () => {}
 })
 
 export function useThings() {
@@ -50,8 +51,23 @@ export default function ContextProvider({ children }: { children: ReactNode}) {
     }
   }
 
+  function buyPassiveBuff(bought: PassiveBuff) {
+    // Proceed if enough clicks to purchase
+    if (bought.price <= clicks) {
+      // Subtract price from clicks
+      setClicks((prevClicks) => prevClicks - bought.price)
+
+      // Increment amount owned of parameterised upgrade
+      setPassiveBuffs(
+        passiveBuffs.map(upgrade =>
+          upgrade.name === bought.name ? {...bought, owned: true } : upgrade 
+        )
+      )
+    }
+  }
+
   return (
-    <Context.Provider value={{ clicks, autoClickers, passiveBuffs, cps, cpsInterval, doClick, autoClick, buyAutoClicker }}>
+    <Context.Provider value={{ clicks, autoClickers, passiveBuffs, cps, cpsInterval, doClick, autoClick, buyAutoClicker, buyPassiveBuff }}>
       { children }
     </Context.Provider>
   )
