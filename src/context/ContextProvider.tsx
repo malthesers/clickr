@@ -2,10 +2,12 @@
 
 import { ReactNode, createContext, useContext, useState } from 'react'
 import { autoClickersData } from '@/upgrades/autoClickers'
+import { passiveBuffsData } from '@/upgrades/passiveBuffs'
 
 const Context = createContext<Context>({
   clicks: 0,
   autoClickers: [],
+  passiveBuffs: [],
   cps: 0,
   cpsInterval: 0,
   doClick: () => {},
@@ -20,6 +22,7 @@ export function useThings() {
 export default function ContextProvider({ children }: { children: ReactNode}) {
   const [clicks, setClicks] = useState<number>(0)
   const [autoClickers, setAutoClickers] = useState<AutoClicker[]>(autoClickersData)
+  const [passiveBuffs, setPassiveBuffs] = useState<PassiveBuff[]>(passiveBuffsData)
   const cps:number = autoClickers.reduce((clicks, upgrade) => clicks + (upgrade.increase * upgrade.owned), 0)
   const cpsInterval:number = cps === 0 ? 1000 : (1000 / cps)
 
@@ -48,7 +51,7 @@ export default function ContextProvider({ children }: { children: ReactNode}) {
   }
 
   return (
-    <Context.Provider value={{ clicks, autoClickers, cps, cpsInterval, doClick, autoClick, buyAutoClicker }}>
+    <Context.Provider value={{ clicks, autoClickers, passiveBuffs, cps, cpsInterval, doClick, autoClick, buyAutoClicker }}>
       { children }
     </Context.Provider>
   )
