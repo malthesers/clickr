@@ -1,6 +1,6 @@
 'use client'
 
-import UpgradeItem from '@/components/UpgradeItem'
+import AutoClicker from '@/components/upgrades/AutoClicker'
 import { useThings } from '@/context/ContextProvider'
 import { useEffect, useState } from 'react'
 
@@ -28,8 +28,8 @@ export default function Home() {
           <button onClick={doClick} className='mx-auto text-5xl duration-200 active:scale-95'>{ clicks }</button>
         </div>
         <div className='flex flex-col gap-4'>
-          { autoClickers.map((upgrade) =>
-            <UpgradeItem upgrade={upgrade} key={upgrade.name} />
+          { autoClickers.map((autoClicker) =>
+            <AutoClicker autoClicker={autoClicker} key={autoClicker.name} />
           )}
         </div>
       </div>
