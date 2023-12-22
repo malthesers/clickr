@@ -1,4 +1,4 @@
-export const upgradesData:Upgrade[] = [
+export const autoClickersData:AutoClicker[] = [
   {
     name: 'Bonus Clicker',
     description: 'Performs additional clicks for you, increasing clicks per second by 1.',

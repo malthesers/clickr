@@ -1,9 +1,9 @@
 interface Context {
   clicks: number
-  upgrades: Upgrade[]
+  autoClickers: AutoClicker[]
   cps: number
   cpsInterval: number
   doClick: () => void
   autoClick: () => void
-  buyUpgrade: (bought:Upgrade) => void
+  buyUpgrade: (bought:AutoClicker) => void
 }

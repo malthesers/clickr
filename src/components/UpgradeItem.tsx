@@ -1,7 +1,7 @@
 import { useThings } from '@/context/ContextProvider'
 
 interface UpgradeItemProps {
-  upgrade: Upgrade
+  upgrade: AutoClicker
 }
 
 export default function UpgradeItem({ upgrade }: UpgradeItemProps) {

@@ -1,7 +1,10 @@
 interface Upgrade {
   name: string,
   description: string,
-  increase: number,
   price: number,
+}
+
+interface AutoClicker extends Upgrade {
+  increase: number,
   owned: number,
 }
