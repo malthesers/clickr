@@ -5,5 +5,5 @@ interface Context {
   cpsInterval: number
   doClick: () => void
   autoClick: () => void
-  buyUpgrade: (bought:AutoClicker) => void
+  buyAutoClicker: (bought:AutoClicker) => void
 }

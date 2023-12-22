@@ -10,7 +10,7 @@ const Context = createContext<Context>({
   cpsInterval: 0,
   doClick: () => {},
   autoClick: () => {},
-  buyUpgrade: () => {}
+  buyAutoClicker: () => {}
 })
 
 export function useThings() {
@@ -32,7 +32,7 @@ export default function ContextProvider({ children }: { children: ReactNode}) {
     if (cps) setClicks((prevClicks) => prevClicks + (cpsInterval >= 100 ? 1 : Math.round(cps / 10)))
   }
 
-  function buyUpgrade(bought: AutoClicker) {
+  function buyAutoClicker(bought: AutoClicker) {
     // Proceed if enough clicks to purchase
     if (bought.price <= clicks) {
       // Subtract price from clicks
@@ -48,7 +48,7 @@ export default function ContextProvider({ children }: { children: ReactNode}) {
   }
 
   return (
-    <Context.Provider value={{ clicks, autoClickers, cps, cpsInterval, doClick, autoClick, buyUpgrade }}>
+    <Context.Provider value={{ clicks, autoClickers, cps, cpsInterval, doClick, autoClick, buyAutoClicker }}>
       { children }
     </Context.Provider>
   )
