@@ -10,6 +10,6 @@ interface AutoClicker extends Upgrade {
 }
 
 interface PassiveBuff extends Upgrade {
-  increase?: number
+  increase: number
   owned: boolean
 }

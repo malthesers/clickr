@@ -2,6 +2,7 @@ interface Context {
   clicks: number
   autoClickers: AutoClicker[]
   passiveBuffs: PassiveBuff[]
+  cpc: number
   cps: number
   cpsInterval: number
   doClick: () => void
