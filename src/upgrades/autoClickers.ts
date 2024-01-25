@@ -1,4 +1,4 @@
-export const autoClickersData:AutoClicker[] = [
+export const autoClickersData: AutoClicker[] = [
   {
     name: 'Bonus Clicker',
     description: 'Performs additional clicks for you, increasing clicks per second by 1.',
@@ -26,5 +26,5 @@ export const autoClickersData:AutoClicker[] = [
     increase: 10,
     price: 100,
     owned: 0
-  },
+  }
 ]
