@@ -30,7 +30,7 @@ export default function ContextProvider({ children }: { children: ReactNode}) {
   const cpsInterval:number = cps === 0 ? 1000 : (1000 / cps)
 
   function doClick(): void {
-    setClicks(clicks + 1)
+    setClicks(clicks + cpc)
   }
 
   function autoClick(): void {
