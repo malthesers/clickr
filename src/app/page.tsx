@@ -12,7 +12,7 @@ export default function Home() {
   useEffect(() => {
     if (isMounted) {
       // Set interval to calculated interval, OR 100 if less than 100 to cap calls at 10 per sec
-      const autoClickInterval = setInterval(autoClick, (cpsInterval >= 100 ? cpsInterval : 100))
+      const autoClickInterval = setInterval(autoClick, cpsInterval >= 100 ? cpsInterval : 100)
 
       // Clear interval on unmount
       return () => clearInterval(autoClickInterval)
@@ -25,20 +25,22 @@ export default function Home() {
     <main className='min-h-screen grid place-content-center p-24'>
       <div className='max-w-5xl grid grid-cols-2'>
         <div className='grid place-content-center gap-4'>
-          <p className='text-2xl text-center'>{ cpc } CpC</p>
-          <p className='text-2xl text-center'>{ cps } CpS</p>
-          <button onClick={doClick} className='mx-auto text-5xl duration-200 active:scale-95'>{ clicks }</button>
+          <p className='text-2xl text-center'>{cpc} CpC</p>
+          <p className='text-2xl text-center'>{cps} CpS</p>
+          <button onClick={doClick} className='mx-auto text-5xl duration-200 active:scale-95'>
+            {clicks}
+          </button>
         </div>
         <div className='flex flex-col gap-4'>
           <div className='flex flex-col gap-4'>
-            {  passiveBuffs.map((passiveBuff) =>
+            {passiveBuffs.map((passiveBuff) => (
               <PassiveBuff passiveBuff={passiveBuff} key={passiveBuff.name} />
-            )}
+            ))}
           </div>
           <div className='flex flex-col gap-4'>
-            { autoClickers.map((autoClicker) =>
+            {autoClickers.map((autoClicker) => (
               <AutoClicker autoClicker={autoClicker} key={autoClicker.name} />
-            )}
+            ))}
           </div>
         </div>
       </div>
