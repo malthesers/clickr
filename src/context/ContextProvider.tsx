@@ -21,13 +21,13 @@ export function useThings() {
   return useContext(Context)
 }
 
-export default function ContextProvider({ children }: { children: ReactNode}) {
+export default function ContextProvider({ children }: { children: ReactNode }) {
   const [clicks, setClicks] = useState<number>(0)
   const [autoClickers, setAutoClickers] = useState<AutoClicker[]>(autoClickersData)
   const [passiveBuffs, setPassiveBuffs] = useState<PassiveBuff[]>(passiveBuffsData)
-  const cpc:number = passiveBuffs.reduce((clicks, upgrade) => upgrade.owned ? clicks * upgrade.multiplier : clicks, 1)
-  const cps:number = autoClickers.reduce((clicks, upgrade) => clicks + (upgrade.increase * upgrade.owned), 0)
-  const cpsInterval:number = cps === 0 ? 1000 : (1000 / cps)
+  const cpc: number = passiveBuffs.reduce((clicks, upgrade) => (upgrade.owned ? clicks * upgrade.multiplier : clicks), 1)
+  const cps: number = autoClickers.reduce((clicks, upgrade) => clicks + upgrade.increase * upgrade.owned, 0)
+  const cpsInterval: number = cps === 0 ? 1000 : 1000 / cps
 
   function doClick(): void {
     setClicks(clicks + cpc)
@@ -46,9 +46,9 @@ export default function ContextProvider({ children }: { children: ReactNode}) {
 
       // Increment amount owned of parameterised upgrade
       setAutoClickers(
-        autoClickers.map(upgrade =>
-          upgrade.name === bought.name ? {...bought, owned: bought.owned + 1 } : upgrade 
-        )
+        autoClickers.map((upgrade) => {
+          return upgrade.name === bought.name ? { ...bought, owned: bought.owned + 1 } : upgrade
+        })
       )
     }
   }
@@ -61,16 +61,16 @@ export default function ContextProvider({ children }: { children: ReactNode}) {
 
       // Increment amount owned of parameterised upgrade
       setPassiveBuffs(
-        passiveBuffs.map(upgrade =>
-          upgrade.name === bought.name ? {...bought, owned: true } : upgrade 
-        )
+        passiveBuffs.map((upgrade) => {
+          return upgrade.name === bought.name ? { ...bought, owned: true } : upgrade
+        })
       )
     }
   }
 
   return (
     <Context.Provider value={{ clicks, autoClickers, passiveBuffs, cpc, cps, cpsInterval, doClick, autoClick, buyAutoClicker, buyPassiveBuff }}>
-      { children }
+      {children}
     </Context.Provider>
   )
 }
