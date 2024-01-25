@@ -2,7 +2,7 @@ export const passiveBuffsData: PassiveBuff[] = [
   {
     name: 'Double Click',
     description: 'Empowering your touch, doubling the value of manual clicks.',
-    increase: 2,
+    multiplier: 2,
     price: 10,
     owned: false
   }
