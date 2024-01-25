@@ -54,8 +54,8 @@ export default function ContextProvider({ children }: { children: ReactNode}) {
   }
 
   function buyPassiveBuff(bought: PassiveBuff) {
-    // Proceed if enough clicks to purchase
-    if (bought.price <= clicks) {
+    // Proceed if enough clicks to purchase and not already bought
+    if (bought.price <= clicks && !bought.owned) {
       // Subtract price from clicks
       setClicks((prevClicks) => prevClicks - bought.price)
 
