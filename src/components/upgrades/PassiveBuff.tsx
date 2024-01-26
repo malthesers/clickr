@@ -17,7 +17,6 @@ export default function PassiveBuff({ passiveBuff }: PassiveBuffProps) {
     >
       <div className='flex flex-row justify-between'>
         <p className='font-bold'>{passiveBuff.name}</p>
-        <p>{passiveBuff.multiplier} CpC</p>
       </div>
       <p className='italic'>{passiveBuff.description}</p>
       <div className='flex flex-row justify-between'>
