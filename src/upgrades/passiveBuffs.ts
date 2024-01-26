@@ -16,7 +16,7 @@ export const passiveBuffsData: PassiveBuff[] = [
   {
     name: 'Semi-Automatic',
     description: 'Your manual click power is increased by your CpS.',
-    price: 5,
+    price: 100,
     owned: false,
     applyBuff: (clicks: number, cps?: number) => (cps ? clicks + cps : clicks)
   }

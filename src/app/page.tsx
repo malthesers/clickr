@@ -23,7 +23,7 @@ export default function Home() {
 
   return (
     <main className='min-h-screen grid place-content-center p-24'>
-      <div className='max-w-5xl grid grid-cols-2'>
+      <div className='max-w-7xl grid grid-cols-3 gap-4'>
         <div className='grid place-content-center gap-4'>
           <p className='text-2xl text-center'>{cpc} CpC</p>
           <p className='text-2xl text-center'>{cps} CpS</p>
@@ -32,16 +32,14 @@ export default function Home() {
           </button>
         </div>
         <div className='flex flex-col gap-4'>
-          <div className='flex flex-col gap-4'>
-            {passiveBuffs.map((passiveBuff) => (
-              <PassiveBuff passiveBuff={passiveBuff} key={passiveBuff.name} />
-            ))}
-          </div>
-          <div className='flex flex-col gap-4'>
-            {autoClickers.map((autoClicker) => (
-              <AutoClicker autoClicker={autoClicker} key={autoClicker.name} />
-            ))}
-          </div>
+          {passiveBuffs.map((passiveBuff) => (
+            <PassiveBuff passiveBuff={passiveBuff} key={passiveBuff.name} />
+          ))}
+        </div>
+        <div className='flex flex-col gap-4'>
+          {autoClickers.map((autoClicker) => (
+            <AutoClicker autoClicker={autoClicker} key={autoClicker.name} />
+          ))}
         </div>
       </div>
     </main>
