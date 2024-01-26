@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import UpgradesProvider from '@/context/ContextProvider'
@@ -10,9 +10,6 @@ export const metadata: Metadata = {
   title: 'clickr',
   description: 'clickr description',
   keywords: ['idle', 'clicker', 'game'],
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
-  themeColor: '#000000',
-  colorScheme: 'dark',
   authors: { name: 'Malthesers (Malthe Kusk Lauritsen)', url: 'https://malthesers.github.io/' },
   creator: 'Malthesers',
   openGraph: {
@@ -20,6 +17,13 @@ export const metadata: Metadata = {
     description: 'clickr description'
     // url: 'https://diable-3.vercel.app/',
   }
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#000000',
+  colorScheme: 'dark'
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
