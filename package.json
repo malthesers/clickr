@@ -1,7 +1,13 @@
 {
   "name": "clickr",
+  "description": "description",
+  "author": "Malthesers (Malthe Kusk Lauritsen)",
   "version": "0.1.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/malthesers/clickr"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
