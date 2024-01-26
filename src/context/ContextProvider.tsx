@@ -25,15 +25,15 @@ export default function ContextProvider({ children }: { children: ReactNode }) {
   const [clicks, setClicks] = useState<number>(0)
   const [autoClickers, setAutoClickers] = useState<AutoClicker[]>(autoClickersData)
   const [passiveBuffs, setPassiveBuffs] = useState<PassiveBuff[]>(passiveBuffsData)
+  const cps: number = autoClickers.reduce((clicks, upgrade) => clicks + upgrade.increase * upgrade.owned, 0)
+  const cpsInterval: number = cps === 0 ? 1000 : 1000 / cps
   const cpc: number = passiveBuffs.reduce((clicks, upgrade) => {
     if (upgrade.owned) {
-      return upgrade.applyBuff(clicks)
+      return upgrade.applyBuff(clicks, cps)
     } else {
       return clicks
     }
   }, 1)
-  const cps: number = autoClickers.reduce((clicks, upgrade) => clicks + upgrade.increase * upgrade.owned, 0)
-  const cpsInterval: number = cps === 0 ? 1000 : 1000 / cps
 
   function doClick(): void {
     setClicks(clicks + cpc)

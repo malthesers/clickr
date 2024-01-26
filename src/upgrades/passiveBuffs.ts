@@ -4,7 +4,7 @@ export const passiveBuffsData: PassiveBuff[] = [
     description: 'Empowering your touch, doubling the value of manual clicks.',
     price: 10,
     owned: false,
-    applyBuff: (clicks) => clicks * 2
+    applyBuff: (clicks: number) => clicks * 2
   },
   {
     name: 'Double Double Click',
@@ -12,5 +12,12 @@ export const passiveBuffsData: PassiveBuff[] = [
     price: 25,
     owned: false,
     applyBuff: (clicks: number) => clicks * 2
+  },
+  {
+    name: 'Semi-Automatic',
+    description: 'Your manual click power is increased by your CpS.',
+    price: 5,
+    owned: false,
+    applyBuff: (clicks: number, cps?: number) => (cps ? clicks + cps : clicks)
   }
 ]
