@@ -11,6 +11,5 @@ interface AutoClicker extends Upgrade {
 
 interface PassiveBuff extends Upgrade {
   applyBuff: (clicks: number) => number
-  multiplier: number
   owned: boolean
 }
