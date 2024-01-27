@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'clickr',
     description: 'clickr description'
-    // url: 'https://diable-3.vercel.app/',
+    // url: 'https://-.vercel.app/',
   }
 }
 
